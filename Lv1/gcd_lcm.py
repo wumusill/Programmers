@@ -14,4 +14,3 @@ def gcdlcm(a, b):
     answer = [c, int(a*b/c)]
 
     return answer
-
