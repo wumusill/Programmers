@@ -11,6 +11,7 @@ def solution(s):
 
     return answer
 
+
 print(solution("110010101001"))
 print(solution("01110"))
 print(solution("1111111"))
