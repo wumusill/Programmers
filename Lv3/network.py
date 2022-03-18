@@ -1,22 +1,26 @@
-# 미완
-def dfs(graph, v):
-    visited[n] = True
-    i = 0
-    for i in graph[v]:
-        if visited[i] == False:
-            visited[n] = True
-            i += 1
-            dfs(i)
-
 def solution(n, computers):
-    answer = n
-    computers
+    visited = [False] * n
+    answer = 0
+    for i in range(n):
+        if visited[i] == False:
+            dfs(n, computers, i, visited)
+            answer += 1
+    return answer
 
 
+def dfs(n, computers, i, visited):
+    visited[i] = True
+    for j in range(n):
+        if i != j and computers[i][j] == 1 and visited[j] == False:
+            dfs(n, computers, j, visited)
 
+c = [
+    [1, 0, 1, 0],
+    [0, 1, 1, 0],
+    [1, 1, 1, 1],
+    [0, 0, 1, 1]
+]
 
-
-visited = [False] * (n+1)
 
 a = [
     [1, 1, 0],
@@ -29,3 +33,7 @@ b = [
     [1, 1, 1],
     [0, 1, 1]
 ]
+
+print(solution(3, a)) # 2
+print(solution(3, b)) # 1
+print(solution(4, c))
