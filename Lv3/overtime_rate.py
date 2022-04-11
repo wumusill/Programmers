@@ -24,3 +24,4 @@ def solution(n, works):
 print(solution(4, [4, 3, 3]))
 print(solution(1, [2, 1, 2]))
 print(solution(3, [1, 1]))
+print(solution(5, [10, 1, 1]))
