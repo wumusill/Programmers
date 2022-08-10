@@ -12,8 +12,6 @@ def solution(n, money):
 print(solution(5, [1, 2, 5]))
 print(solution(6, [1, 2, 5]))
 
-# https://programmers.co.kr/questions/25161
-
 # 1: 1
 # 2: (1, 1)    (2)
 # 3: (1, 1, 1)     (2, 1)
