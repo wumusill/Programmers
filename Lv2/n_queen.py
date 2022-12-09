@@ -16,6 +16,7 @@ def dfs(queen, n, row):
             # 대각선으로 겹치면 안됨
             if abs(queen[y] - queen[row]) == (row - y):
                 break
+        # 위 두 종료 조건에 걸리지 않으면 실행되는 else문
         # 세로, 대각선이 겹치지 않는다면 dfs 이어서 진행
         else:
             count += dfs(queen, n, row + 1)
