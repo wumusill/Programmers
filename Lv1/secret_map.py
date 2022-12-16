@@ -16,3 +16,12 @@ def solution(n, arr1, arr2):
 
 
 print(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]))
+
+###############################################################################
+
+def solution(n, arr1, arr2):
+    answer = []
+    for str1, str2 in zip(arr1, arr2):
+        res = bin(str1 | str2)[2:].zfill(n).replace("1", "#").replace("0", " ")
+        answer.append(res)
+    return answer
