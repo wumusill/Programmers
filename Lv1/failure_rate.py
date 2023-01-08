@@ -20,7 +20,7 @@ def solution(N, stages):
     return answer_list
 
 
-print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
+print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3]))
 print(solution(4, [4, 4, 4, 4, 4]))
 print(solution(1, [2]))
 print(solution(5, [3, 3, 3, 3, 3]))
