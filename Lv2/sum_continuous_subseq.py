@@ -1,27 +1,41 @@
-# list로 구현
-def solution(elements):
-    length = len(elements)
-    temp = list(set(elements))
-    elements *= 2
-
-    for i in range(2, length + 1):
-        for j in range(length):
-            _sum = sum(elements[j:j + i])
-            temp.append(_sum)
+# 투포인터 접근
+def solution(sequence, k):
+    # 왼쪽 포인터
+    left = 0
+    # 오른쪽 포인터
+    right = 0
+    answer = []
+    res = sequence[0]
     
-    return len(set(temp))
+    while True:
+        # 연속 부분 수열의 합이 목표 값보다 작은데
+        # 오른쪽 포인터 뒤에 숫자가 더 있다면
+        # 오른쪽 포인터를 한 칸 뒤로 이동
+        if res < k and right < len(sequence) - 1:
+            right += 1
+            res += sequence[right]
 
+        # 연속 부분 수열의 합이 목표 값과 같다면
+        # 왼쪽 포인터, 오른쪽 포인터, 두 포인터 사이의 거리를 기록
+        # 왼쪽 포인터 뒤로 한 칸 이동
+        elif res == k:
+            answer.append([left, right, right - left])
+            res -= sequence[left]
+            left += 1
 
-############################################################
-# set으로 구현, 더 나은 속도를 보임
-def solution(elements):
-    length = len(elements)
-    temp = set(elements)
-    elements *= 2
+        # 연속 부분 수열의 합이 목표 값보다 크다면
+        # 왼쪽 포인터를 뒤로 한 칸 이동
+        elif res > k:
+            res -= sequence[left]
+            left += 1
 
-    for i in range(2, length + 1):
-        for j in range(length):
-            _sum = sum(elements[j:j + i])
-            temp.add(_sum)
+        # 만약 연속 부분 수열의 합이 목표 값보다 작은데
+        # 오른쪽 포인터 뒤에 숫자가 더 없다면 반복문 종료
+        if res < k and right == len(sequence) - 1:
+            break
     
-    return len(temp)
+    # 두 포인터 사이 거리를 기준으로 오름차순 정렬
+    answer.sort(key=lambda x: x[2])
+
+    # 두 포인터 사이 거리가 가장 가까운 쌍을 출력
+    return [answer[0][0], answer[0][1]]
